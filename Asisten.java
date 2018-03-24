@@ -1,2 +1,2 @@
-//KELAS MAHASISWA
+//KELAS ASISTEN
 //Asisten.java
