@@ -1,24 +1,30 @@
 //KELAS ASISTEN
-//Asisten.java
+//Asisten2.java
+
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Asisten implements Runnable{
 	Point posA;
 	Scanner ask = new Scanner(System.in);
 	ReentrantLock lock = new ReentrantLock();
+	private Map map;
 	
 	
 	public Asisten(int x, int y){
 		this.posA = new Point(x,y);
 	}
 	
-	public isThere(Point p){
-		return ((posA.getX == p.getX) && (posA.getY == p.getY));
+	public boolean isThere(Point p){
+		return ((posA.getX() == p.getX()) && (posA.getY() == p.getY()));
 	}
 	
 	public boolean checkAns(Praktikan p, String ans){
 		boolean check = false;
 		
-		if (p.getPQ().equals("1 + 1 = ?"){
+		if (p.getPQ().equals("1 + 1 = ?")){
 			if (ans.equals("2")){
 				check = true;
 			}else{
@@ -42,78 +48,52 @@ public class Asisten implements Runnable{
 	
 	public void run(){
 		lock.lock();
-		Praktikan pout = Main.q.poll();
+		Praktikan pout = Main2.q.poll();
 		
-		while (!isThere(pout.getPos()){ //cara akses queuenya gimana
+		while (!isThere(pout.getPos())) { //cara akses queuenya gimana
 			if (posA.getX() < pout.getPos().getX()){
-				map.moveRight(posA.getX(),posA.getY); //map msh belum inisialisasi
-				int nx = posA.getX()++;
+				map.moveRight(posA.getX(),posA.getY()); //map msh belum inisialisasi
+				int nx = posA.getX()+1;
 				posA.setX(nx);
 				
 			}else if (posA.getX() > pout.getPos().getX()){
-				map.moveLeft(posA.getX(),posA.getY);
-				int nx = posA.getX()--;
+				map.moveLeft(posA.getX(),posA.getY());
+				int nx = posA.getX()-1;
 				posA.setX(nx);
 				
 			}else if (posA.getY() < pout.getPos().getY()){
-				map.moveUp(posA.getX(),posA.getY);
-				int ny = posA.getY()++;
+				map.moveUp(posA.getX(),posA.getY());
+				int ny = posA.getY()+1;
 				posA.setY(ny);
 				
 			}else if (posA.getY() > pout.getPos().getY()){
-				map.moveDown(posA.getX(),posA.getY);
-				int ny = posA.getY()--;
+				map.moveDown(posA.getX(),posA.getY());
+				int ny = posA.getY()-1;
 				posA.setY(ny);
 			}
 			map.printRoom(); //map msh belum inisialisasi
-			Thread.sleep(3000);
+			try {
+				Thread.sleep(3000);
+			}
 			
+			catch (InterruptedException e) {
+				System.out.println("Interrupted!");
+			}
 		}
 		//System.out.println(...) pertanyaannya
-		System.out.println(q.getPQ());
+		System.out.println(pout.getPQ());
 		String ans = ask.nextLine();
 		if (!checkAns(pout,ans)){
 			//salah jawab
 			System.out.println("Jawaban salah");
-			Main.q.add(pout);
+			Main2.q.add(pout);
 		}
 		
 		lock.unlock();
 	}
 	
-	class Point{
-		private int x;
-		private int y;
-		
-		public Point(){
-			x = 0;
-			y = 0;
-		}
-		
-		public Point(int x, int y){
-			this.x = x;
-			this.y = y;
-		}
-		
-		public int getX () {
-			return this.x;
-		}
-		
-		public int getY () {
-			return this.y;
-		}
-		
-		public void setX (int x) {
-			this.x = x;
-		}
-		
-		public void setY (int y) {
-			this.y = y;
-		}
-	}
-	
 	public void setPosA(int x, int y){
-		posa.setX(x);
-		posa.setY(y);
+		posA.setX(x);
+		posA.setY(y);
 	}
 }
