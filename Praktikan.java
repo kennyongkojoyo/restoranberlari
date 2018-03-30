@@ -1,5 +1,7 @@
 //Praktikan.java
 
+//Praktikan.java
+
 import java.util.Random;
 
 public class Praktikan {
@@ -17,36 +19,6 @@ public class Praktikan {
 	
 	public static int getNo () {
 		return no;
-	}
-	
-	class Point {
-		private int x;
-		private int y;
-		
-		public Point () {
-			Random rand1 = new Random();
-			this.x = rand1.nextInt(10) + 1;
-			Random rand2 = new Random();
-			this.y = rand2.nextInt(10) + 1;
-		}
-		
-			
-		public int getX () {
-			return this.x;
-		}
-		
-		public int getY () {
-			return this.y;
-		}
-		
-		public void setX (int X) {
-			this.x = x;
-		}
-		
-		public void setY (int y) {
-			this.y = y;
-		}
-		
 	}
 	
 	class QuestionGenerator {
@@ -74,6 +46,19 @@ public class Praktikan {
 	
 	public void tanya () {
 		q = new QuestionGenerator ();
+	}
+	
+	public void run () {
+		tanya();
+		Main2.q.add(this);
+		System.out.println(this.getPQ());
+		try {
+			Thread.sleep(1000);
+		}
+		
+		catch (InterruptedException e) {
+			System.out.println("Interrupted!");
+		}
 	}
 	
 	public void checkAns (String ans) {
@@ -114,4 +99,10 @@ public class Praktikan {
 	public String getPQ(){
 		return q.getQ();
 	}
+	
+	public Point getPos () {
+		return this.pos;
+	}
 }
+
+
