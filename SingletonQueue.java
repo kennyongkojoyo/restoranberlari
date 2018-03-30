@@ -1,8 +1,8 @@
 import java.util.*;
 
-public class SingletonQueue<A>{
+public class SingletonQueue{
 	private static SingletonQueue queueIns = null;
-	private Queue<A> queue = new LinkedList<A>();
+	private Queue queue = new LinkedList();
 	
 	public static SingletonQueue getIns(){
 		if (queueIns == null){
@@ -11,24 +11,24 @@ public class SingletonQueue<A>{
 		return queueIns;
 	}
 	
-	public Queue<A> getQueue(){
+	public Queue getQueue(){
 		return queue;
 	}
 	
-	public void add(A a){
+	public void add(Praktikan a){
 		synchronized (queue){
 			queue.add(a);
 		}
 	}
 	
-	public void remove(A a) {
+	public void remove(Praktikan a) {
 		synchronized (queue) {
 			queue.remove(a);
 		}
 	}
 	
-	public A poll() {
-		A a = queue.poll();
+	public Praktikan poll() {
+		Praktikan a = (Praktikan)queue.poll();
 		return a;
 	}
  
@@ -43,3 +43,4 @@ public class SingletonQueue<A>{
 		return queue.size();
 	}
 }
+
