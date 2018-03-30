@@ -7,7 +7,7 @@ public class Existence<A>{
 		this.exist = 1;
 	}
 	
-	public setObject(){ // untuk existence level praktikan dan wall
+	public void setObject(){ // untuk existence level praktikan dan wall
 		this.exist = 10;
 	}
 }
