@@ -16,7 +16,7 @@ public class Praktikan {
 	}
 	
 	public static int getNo () {
-		return this.no;
+		return no;
 	}
 	
 	class Point {
@@ -110,7 +110,8 @@ public class Praktikan {
 	public void setTf (boolean tf) {
 		this.tf = tf;
 	}
+	
+	public String getPQ(){
+		return q.getQ();
+	}
 }
-
-
-
