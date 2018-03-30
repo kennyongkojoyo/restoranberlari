@@ -10,7 +10,7 @@ public class Map{
 		
 		for (int i = 0; i < rows; i++){
 			for (int j = 0; j < cols; j++){
-				if ((i == 0) || (j == 0)){
+				if ((i == 0) || (j == 0) || (i == rows - 1) || (j == cols - 1)){
 					map[i][j] = border;
 				}else{
 					map[i][j] = a;
@@ -54,9 +54,10 @@ public class Map{
 	public void printRoom(){
 		for (int i = 0; i < rows; i++){
 			for (int j = 0; j < cols; j++){
-				System.out.println(map[i][j]);
+				System.out.print(map[i][j].getSomething().toString());
 			}
 			System.out.println("");
 		}
 	}
 }
+
