@@ -6,6 +6,7 @@ public class Main {
 	/*public static int getNo () {
 		return no;
 	}*/
+	// cara stop saat ada pertanyaan : pakai while ada pertanyaan -> sleep thread
 	
 	public static void main (String[] args) {
 		Praktikan p1 = new Praktikan ();
@@ -43,3 +44,6 @@ public class Main {
 		pb.printRoom();
 	}
 }
+		
+		
+
